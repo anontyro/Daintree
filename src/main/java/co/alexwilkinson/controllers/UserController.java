@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import co.alexwilkinson.models.User;
@@ -31,10 +32,8 @@ public class UserController {
 	
 	@PostMapping("/userform")
 	public String userSubmit(@ModelAttribute User user){
-		String userId = "";
 		try{
 			userDao.save(user);
-			userId = String.valueOf(user.getIdmainuser());
 		}catch(Exception ex){
 			ex.printStackTrace();
 			
@@ -42,6 +41,7 @@ public class UserController {
 		return "userformresult";
 	}
 	
+	//Controller to allow for the list of all users to be displayed
 	@GetMapping("/list")
 	public String listUsers(Model model){
 		
@@ -51,5 +51,25 @@ public class UserController {
 		
 		return "userlist";
 	}
+	
+	@GetMapping("/updateuser")
+	public String updateuser(@RequestParam("userId") long idmainuser, Model model){
+		
+		User user = userDao.findByIdmainuser(idmainuser);
+		
+		model.addAttribute("user", user);
+		
+		return "userform";
+	}
+	
+	@GetMapping("/deleteuser")
+	public String deleteuser(@RequestParam("userId") long idmainuser, Model model){
+		
+		userDao.delete(idmainuser);
+		
+		return "redirect:list";
+	}
+	
+	
 	
 }

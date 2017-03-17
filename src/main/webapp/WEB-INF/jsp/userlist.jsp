@@ -20,11 +20,11 @@
 	
 	<c:forEach var="tempUser" items="${user}">
 	
-	<c:url var="updateUser" value="${tempUser.idmainuser}">
+	<c:url var="updateUser" value="/users/updateuser">
 		<c:param name="userId" value="${tempUser.idmainuser}"/>
 	</c:url>
 	
-	<c:url var="deleteUser" value="${tempUser.idmainuser}">
+	<c:url var="deleteUser" value="/users/deleteuser">
 		<c:param name="userId" value="${tempUser.idmainuser}"/>
 	</c:url>
 	
