@@ -3,6 +3,9 @@ package co.alexwilkinson.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name= "mainuseraccess")
 public class User {
@@ -11,13 +14,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idmainuser;
 	
-	@NotNull
+	@NotNull @Email @NotEmpty
 	private String email;
 	
-	@NotNull
+	@NotNull @NotEmpty
 	private String username;
 	
-	@NotNull
+	@NotNull @NotEmpty
 	private String password;
 	
 	public User(String username, String email, String password){

@@ -13,15 +13,32 @@
 <table class="table table-striped">
 	<tr>
 		<th>Username</th>
-		<th>email</th>
+		<th>Email</th>
+		<th>Actions</th>
 		
 	</tr>
 	
 	<c:forEach var="tempUser" items="${user}">
 	
+	<c:url var="updateUser" value="${tempUser.idmainuser}">
+		<c:param name="userId" value="${tempUser.idmainuser}"/>
+	</c:url>
+	
+	<c:url var="deleteUser" value="${tempUser.idmainuser}">
+		<c:param name="userId" value="${tempUser.idmainuser}"/>
+	</c:url>
+	
 	<tr>
 		<td>${tempUser.username}</td>
+		
 		<td>${tempUser.email}</td>
+		
+		<td>
+		<a href="${updateUser}">Update</a>
+		|
+		<a href="${deleteUser}">Delete</a>
+		</td>
+		
 	</tr>
 	
 	</c:forEach>
