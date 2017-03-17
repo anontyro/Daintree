@@ -11,7 +11,7 @@
 </head>
 <body>
 <h2>Form</h2>
-<form:form action="/userform" modelAttribute="user" method = "POST">
+<form:form action="/users/userform" modelAttribute="user" method = "POST">
 
 	<form:hidden path="idmainuser"/>
 

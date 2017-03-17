@@ -17,7 +17,7 @@ import co.alexwilkinson.models.User;
 import co.alexwilkinson.models.UserDao;
 
 @Controller
-//@RequestMapping("/users") //wrap all the user requests into the /user domain
+@RequestMapping("/users") //wrap all the user requests into the /user domain
 public class UserController {
 	
 	@Autowired
@@ -29,7 +29,7 @@ public class UserController {
 		return "userform";
 	}
 	
-	@PostMapping("userform")
+	@PostMapping("/userform")
 	public String userSubmit(@ModelAttribute User user){
 		String userId = "";
 		try{
