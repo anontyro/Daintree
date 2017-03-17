@@ -9,7 +9,7 @@
 <%@ include file="header.jsp" %>
 </head>
 <body>
-
+<a href="${pageContext.request.contextPath}/users/userform" class="btn btn-primary">Add User</a>
 <table class="table table-striped">
 	<tr>
 		<th>Username</th>
