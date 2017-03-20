@@ -8,26 +8,24 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import co.alexwilkinson.auth.repository.model.Role;
+import co.alexwilkinson.auth.model.Role;
 
 @Entity
-@Table(name= "mainuseraccess")
+@Table(name= "user")
 public class User {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long idmainuser;
+
+	private long id;
 	
-	@NotNull @Email @NotEmpty
 	private String email;
-	
-	@NotNull @NotEmpty
+
 	private String username;
 	
-	@NotNull @NotEmpty
 	private String password;
 	
 	private Set<Role> roles;
+	
+	private String passwordConfirm;
 	
 	public User(String username, String email, String password){
 		this.username = username;
@@ -38,13 +36,15 @@ public class User {
 	public User(){
 		
 	}
-
-	public long getIdmainuser() {
-		return idmainuser;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public long getId() {
+		return id;
 	}
 
-	public void setIdmainuser(long idmainuser) {
-		this.idmainuser = idmainuser;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
@@ -69,6 +69,15 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@Transient
+	public String getPasswordConfirm(){
+		return passwordConfirm;
+	}
+	
+	public void setPasswordConfirm(String passwordConfirm){
+		this.passwordConfirm = passwordConfirm;
 	}
 	
 	@ManyToMany

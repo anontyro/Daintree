@@ -21,7 +21,7 @@
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		
 		<button class="btn btn-primary" type="submit"">Log In</button>
-		<h4 class="text-center"><a href="#">Create an account</a></h4>
+		<h4 class="text-center"><a href="${pageContext.request.contextPath}/register">Create an account</a></h4>
 		
 	</div>
 	

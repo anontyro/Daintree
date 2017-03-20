@@ -1,4 +1,4 @@
-package co.alexwilkinson.auth.repository.model;
+package co.alexwilkinson.auth.model;
 
 import java.util.Set;
 
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import co.alexwilkinson.models.User;
 
 @Entity
-@Table(name="")
+@Table(name="role")
 public class Role {
 	private Long id;
 	private String name;

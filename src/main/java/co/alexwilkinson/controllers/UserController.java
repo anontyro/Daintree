@@ -53,9 +53,9 @@ public class UserController {
 	}
 	
 	@GetMapping("/updateuser")
-	public String updateuser(@RequestParam("userId") long idmainuser, Model model){
+	public String updateuser(@RequestParam("userId") long id, Model model){
 		
-		User user = userDao.findByIdmainuser(idmainuser);
+		User user = userDao.findById(id);
 		
 		model.addAttribute("user", user);
 		
@@ -63,9 +63,9 @@ public class UserController {
 	}
 	
 	@GetMapping("/deleteuser")
-	public String deleteuser(@RequestParam("userId") long idmainuser, Model model){
+	public String deleteuser(@RequestParam("userId") long id, Model model){
 		
-		userDao.delete(idmainuser);
+		userDao.delete(id);
 		
 		return "redirect:list";
 	}

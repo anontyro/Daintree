@@ -13,7 +13,7 @@
 <h2>Form</h2>
 <form:form action="/users/userform" modelAttribute="user" method = "POST">
 
-	<form:hidden path="idmainuser"/>
+	<form:hidden path="id"/>
 
 	<label>Username</label>
 	<form:input path="username" />
