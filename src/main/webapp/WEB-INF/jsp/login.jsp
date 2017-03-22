@@ -9,15 +9,16 @@
 </head>
 <body>
 
-<div class="fluid-container">
+<div class="container">
 
 	<form method="POST" action="/login" class="form">
 	
-	<div class="form-group">
+	<div class="form-group ${error != null ? 'has-error' : ''}">
+		<span>${message}</span>
 		<input name="username" type="text" class="form-control" placeholder="Usernname"
 		autofocus="true" />
 		<input name="password" type="password" class="form-control" placeholder="Password" />
-		
+		<span>${error}</span>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		
 		<button class="btn btn-primary" type="submit"">Log In</button>
