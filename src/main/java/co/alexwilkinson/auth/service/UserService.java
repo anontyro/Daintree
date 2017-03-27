@@ -5,5 +5,9 @@ import co.alexwilkinson.models.User;
 public interface UserService {
 	void save(User user);
 	
-	User findByUsername(String username);
+	public User findByUsername(String username);
+	
+	public User findByEmail(String email);
+	
+	public User findById(Long id);
 }

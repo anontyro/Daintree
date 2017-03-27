@@ -19,6 +19,8 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
+	private String firstname;
+	private String lastname;
 	private Set<Role> roles;
 	private String passwordConfirm;
 	public User(String username, String email, String password){
@@ -82,6 +84,22 @@ public class User {
 	
 	public void setRoles(Set<Role>roles){
 		this.roles = roles;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	
 

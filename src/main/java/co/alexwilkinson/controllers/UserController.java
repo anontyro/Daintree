@@ -1,12 +1,9 @@
 package co.alexwilkinson.controllers;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
+import co.alexwilkinson.auth.service.UserService;
 import co.alexwilkinson.models.User;
 import co.alexwilkinson.models.UserDao;
 
@@ -26,29 +23,36 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 	
-
-	@GetMapping("/userform")
-	public String userForm(Model model){
-		model.addAttribute("user", new User());
-		return "userform";
-	}
+	@Autowired
+	private UserService userService;
 	
+
+//	@GetMapping("/userform")
+//	public String userForm(Model model){
+//		model.addAttribute("user", new User());
+//		return "userform";
+//	}
+//	
 	@PostMapping("/userform")
 	public String userSubmit(@ModelAttribute User user){
 		try{
-			userDao.save(user);
+			userService.save(user);
 		}catch(Exception ex){
 			ex.printStackTrace();
 			
 		}
-		return "userformresult";
+		return "redirect:list?update";
 	}
 	
 	//Controller to allow for the list of all users to be displayed
 	@GetMapping("/list")
-	public String listUsers(Model model){
+	public String listUsers(Model model, String update){
 		
 		List<User> user = (List<User>) userDao.findAll();
+		
+		if(update != null){
+			model.addAttribute("message", "User successfully updated");
+		}
 		
 		model.addAttribute("user", user);
 		
@@ -58,7 +62,7 @@ public class UserController {
 	@GetMapping("/updateuser")
 	public String updateuser(@RequestParam("userId") long id, Model model){
 		
-		User user = userDao.findById(id);
+		User user = userService.findById(id);
 		
 		model.addAttribute("user", user);
 		
@@ -76,7 +80,7 @@ public class UserController {
 	@GetMapping("/profile")
 	public String viewprofile(Model model, Authentication auth){
 		
-		User user = userDao.findByUsername(auth.getName()) ;
+		User user = userService.findByUsername(auth.getName()) ;
 		
 		model.addAttribute("user",user);
 		

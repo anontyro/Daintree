@@ -9,7 +9,9 @@
 <%@ include file="header.jsp" %>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/users/userform" class="btn btn-primary">Add User</a>
+<a href="${pageContext.request.contextPath}/register" class="btn btn-primary">Add User</a>
+<br><br>
+<span>${message}</span>
 <table class="table table-striped">
 	<tr>
 		<th>Username</th>
