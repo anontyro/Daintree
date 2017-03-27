@@ -60,7 +60,7 @@ public class WebController {
 	}
 	
 	@GetMapping("/login")
-	public String login(Model model, String error, String logout){
+	public String login(Model model, String error, String logout, String expire){
 		
 		if(error != null){
 			model.addAttribute("error", "You entered incorrect details, please try again");
@@ -68,6 +68,10 @@ public class WebController {
 		
 		if(logout != null){
 			model.addAttribute("message", "You have logged out successfully");
+		}
+		
+		if(expire != null){
+			model.addAttribute("message", "Session expired please login again");
 		}
 		
 		return "login";
