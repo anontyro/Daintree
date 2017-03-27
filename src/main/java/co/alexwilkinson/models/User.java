@@ -16,17 +16,11 @@ public class User {
 	
 
 	private long id;
-	
 	private String email;
-
 	private String username;
-	
 	private String password;
-	
 	private Set<Role> roles;
-	
 	private String passwordConfirm;
-	
 	public User(String username, String email, String password){
 		this.username = username;
 		this.email = email;

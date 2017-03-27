@@ -5,6 +5,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ public class UserController {
 	
 	@Autowired
 	private UserDao userDao;
+	
 
 	@GetMapping("/userform")
 	public String userForm(Model model){
@@ -68,6 +71,16 @@ public class UserController {
 		userDao.delete(id);
 		
 		return "redirect:list";
+	}
+	
+	@GetMapping("/profile")
+	public String viewprofile(Model model, Authentication auth){
+		
+		User user = userDao.findByUsername(auth.getName()) ;
+		
+		model.addAttribute("user",user);
+		
+		return "userprofile";
 	}
 	
 	

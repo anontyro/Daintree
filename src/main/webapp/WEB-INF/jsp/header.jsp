@@ -62,7 +62,7 @@
 					aria-expanded="false"><security:authentication
 								property="principal.username" /> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Profile</a></li>
+						<li><a href="<c:url value="users/profile" />">Profile</a></li>
 						<li><a href="#">Another action</a></li>
 						<li><a href="#">Something else here</a></li>
 						<li role="separator" class="divider"></li>
