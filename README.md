@@ -1,6 +1,7 @@
 # Daintree
 A Spring boot test site
-
+---
+#### Development - Active
 This Daintree application was my first Spring Boot attempt which came after I explored the world of Spring MVC.
 I found out that Spring Boot could offer a nicer experience in developing sites to enable rapid development and deployment.
 
@@ -10,3 +11,15 @@ the User Authentication part of the application.
 The templating engine I am using is JSP generally because that is the most common in the job market in Singapore.
 
 I learnt a lot from this application and aim to apply that knowledge in future more advanced projects.
+
+Project Breakdown
+---
+1.
+2.
+
+
+### The Code
+
+## UX
+
+
